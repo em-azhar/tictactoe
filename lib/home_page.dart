@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tictactoe/game_page.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,19 +14,44 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            CupertinoButton(
-              color: Colors.black54,
-              child: const Text("O"),
-              onPressed: () {},
+        child: Padding(
+          padding: const EdgeInsets.only(left: 50.0, right: 50),
+          child: SizedBox.expand(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CupertinoButton(
+                  color: Colors.black,
+                  child: const Text("O"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const GamePage(
+                          userChoice: "O",
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                CupertinoButton(
+                  color: Colors.amber,
+                  child: const Text("X"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const GamePage(
+                          userChoice: "X",
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
-            CupertinoButton(
-              color: Colors.white38,
-              child: const Text("X"),
-              onPressed: () {},
-            ),
-          ],
+          ),
         ),
       ),
     );
